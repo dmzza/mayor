@@ -6,14 +6,14 @@
 //* style variables *//
 
 // headline font
-$headline-font: "chaparral-pro", Helvetica, sans-serif;
+$headline-font: "proxima-nova", Helvetica, sans-serif;
 
 // main font
 $font: "proxima-nova", sans-serif;
 
 $theme-color-1: #c4002c;
 $theme-color-2: #e6e6e6;
-$theme-color-3: #1a99d4;
+$theme-color-3: rgb(68,148,215);
 $theme-color-4: #015982;
 
 // form input area focus color
@@ -26,7 +26,7 @@ $green: #619114;
 // background images
 $background-texture: "body-cerulean.jpg";
 $header-texture: "header-cerulean.jpg";
-$header-color: #00699b;
+$header-color: #3C5BD8;
 
 //* main responsive components *//
 
@@ -161,7 +161,7 @@ img {
 }
 
 body {
-  background: url($background-texture) repeat $theme-color-2;
+  background: $theme-color-2;
   margin: 0;
   font: 15px/21px $font;
   color: #505054;
@@ -411,7 +411,6 @@ nav {
 .onecolumn-container {
   background-color: #fff;
   padding: 20px;
-  @include border-radius(5px);
   border: 1px solid #ebebeb;
   margin-top: -30px;
   margin-bottom: 20px;
@@ -421,22 +420,44 @@ nav {
 
 .jumboform {
   clear: both;
-  height: 500px;
+  height: 400px;
   position: relative;
+  margin-top: -21px;
+  margin-left: -21px;
+  margin-right: -21px;
+  border-bottom: 40px solid $theme-color-2;
+  background-color: rgb(68,148,215);
+  color: white;
+  h1 {
+    margin: 10px 0 30px 0;
+  }
   ul {
-    padding: 0;
-    margin: 0;
+    padding: 20px;
+    margin: 0 20px;
     li {
       list-style: none;
+      font-size: 2em;
+      line-height: 1em;
+      margin-top: 10px;
+      text-align: right;
     }
   }
   .headshot {
     float: left;
-    margin-right: 25px;
-    height: 90%;
+    margin-right: 35px;
+    height: 100%;
     img {
       height: 100%;
     }
+  }
+  .submit-button {
+    background-color: $header-color;
+    margin-top:-5px;
+  }
+  .email-address {
+    padding: 8px 12px;
+    width: 40%;
+    font-size: 1.5em;
   }
 }
 
@@ -803,7 +824,7 @@ ul#page-stream {
 .header-container {
   padding-bottom: 40px;
   min-height: 140px;
-  background: url($header-texture) repeat-x $header-color;
+  background: $header-color;
 }
 
 // site wide footer
