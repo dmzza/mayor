@@ -2,7 +2,7 @@
 	<ul id="mnav">
   {% for child in site.root_nav_pages %}
     {% if child.leaf? or child.nav_children.size == 0 %}
-				<li><div class="content_list_arrow"><a href="{{ child.url }}">{{ child.name }}</a></div></li>
+		<li><div class="content_list_arrow"><a href="{{ child.url }}">{{ child.name }}</a></div></li>
     {% else %}
 		<li class="drop"><div class="content_list_arrow"><a href="{{ child.url }}">{{ child.name }}</a></div></li>
 
