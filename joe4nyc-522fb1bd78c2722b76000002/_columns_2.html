@@ -1,0 +1,82 @@
+<div class="twocolumn-container clearfix">
+
+  <div class="left-column">
+
+    {{ content_for_notifications }}
+
+    <div class="content-{{ request.template  | replace: '_', '-' }}">
+      {% yield %}
+    </div>
+
+  </div>
+  <!-- .left_column -->
+
+  <div class="right-column">
+
+    {% if request.logged_in? %}
+
+    {% include "supporter_nav" %}
+    {% if request.is_ssl? %}
+	  {% else %}
+    	<a class="twitter-timeline" href="https://twitter.com/melaragno4nyc" data-widget-id="356572902038056961">Tweets by @melaragno4nyc</a>
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    {% endif %} 
+
+
+    {% else %}
+
+    {% if site.has_signup_page? %}
+    {% include "signup_form" with site.signup_page %}
+    {% endif %}
+
+    {% if site.has_button1? %}
+    <a class="button supporter-nav-button" href="{{ site.button1_page.full_url_with_profile_recruiter }}">{{ site.button1_text }}</a>
+    {% endif %}
+
+    {% if site.has_button2? %}
+    <a class="button supporter-nav-button" href="{{ site.button2_page.full_url_with_profile_recruiter }}">{{ site.button2_text }}</a>
+    {% endif %}
+
+    {% if site.has_button3? %}
+    <a class="button supporter-nav-button" href="{{ site.button3_page.full_url_with_profile_recruiter }}">{{ site.button3_text }}</a>
+    {% endif %}
+    
+    {% if request.is_ssl? %}
+    {% else %}
+    <!--This adds the Twitter widget-->
+    <a class="twitter-timeline" href="https://twitter.com/melaragno4nyc" data-widget-id="356572902038056961">Tweets by @melaragno4nyc</a>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    {% endif %} 
+
+    <ul class="supporter-nav">
+      <li><a href="{{ request.facebook_connect_url }}"><i class="icon-facebook-squared"></i> Sign in with Facebook</a>
+      </li>
+      <li><a href="{{ request.twitter_connect_url }}"><i class="icon-twitter-squared"></i> Sign in with Twitter</a></li>
+      <li><a href="/login"><i class="icon-user"></i> Sign in with Email</a></li>
+    </ul>
+    
+    <div class="padtopmore">
+      <div class="box">
+        <!--{% if site.has_twitter? %}
+        <div class="padtopmore">
+          <a href="{{ site.broadcaster.twitter_profile_url }}" class="twitter-follow-button" data-show-count="false">Follow @{{ site.broadcaster.twitter_login }} on Twitter</a>
+        </div>
+        {% endif %}-->
+        {% if page and page.has_rss? %}
+        <div class="padtopmore">
+          <a href="{{ page.rss_url }}"><i class="icon-rss"></i></a> <a href="{{ page.rss_url }}">Subscribe with RSS</a>
+        </div>
+        {% elsif page and page.has_parent? and page.parent.has_rss? %}
+        <div class="padtopmore">
+          <a href="{{ page.parent.rss_url }}"><i class="icon-rss"></i></a>
+          <a href="{{ page.parent.rss_url }}">Subscribe with RSS</a>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+
+    {% endif %}
+
+  </div>
+  <!-- .right-column -->
+</div> <!-- .twocolumn_container -->
